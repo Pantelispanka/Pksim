@@ -5,10 +5,31 @@
  */
 package org.kinkydesign.pksim.resources;
 
+import io.swagger.annotations.Api;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+
 /**
  *
  * @author pantelispanka
  */
+
+@Consumes("application/json")
+@Produces("application/json")
+@Api(value = "/Cas", tags = "Cas")
 public class Pksim {
+    
+    
+    @POST
+    @Path("train")
+    
+    public Response getModel(){
+        return Response.ok().build();
+    }
+    
+    
     
 }
