@@ -24,10 +24,10 @@ import org.kinkydesign.pksim.dto.TrainingResponse;
  *
  * @author pantelispanka
  */
-
+@Path("/services")
 @Consumes("application/json")
 @Produces("application/json")
-@Api(value = "/Cas", tags = "Cas")
+@Api(value = "/services", tags = "services")
 public class Pksim {
     
     
@@ -35,11 +35,7 @@ public class Pksim {
     @Path("train")
     @Consumes("application/json")
     @Produces("application/json")
-    @ApiOperation(value="converts cas to smiles",extensions={
-            @Extension(name="openrisknet",properties={
-                    @ExtensionProperty(name="register_service", value="false")
-            })
-    })
+    @ApiOperation(value="creates and returns the model")
     @ApiResponses( value = {@ApiResponse(code = 200 , message = "", response = JsonObject.class),
             @ApiResponse(code = 500, message = "Unkown Error", response = ErrorReport.class)})
     public Response trainModel(JsonObject json){
@@ -48,14 +44,10 @@ public class Pksim {
     
     
     @POST
-    @Path("train")
+    @Path("predict")
     @Consumes("application/json")
     @Produces("application/json")
-    @ApiOperation(value="converts cas to smiles",extensions={
-            @Extension(name="openrisknet",properties={
-                    @ExtensionProperty(name="register_service", value="false")
-            })
-    })
+    @ApiOperation(value="creates a prediction")
     @ApiResponses( value = {@ApiResponse(code = 200 , message = "", response = JsonObject.class),
             @ApiResponse(code = 500, message = "Unkown Error", response = ErrorReport.class)})
     public Response getPrediction(JsonObject json){

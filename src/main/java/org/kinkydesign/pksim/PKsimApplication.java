@@ -18,7 +18,7 @@ import org.kinkydesign.pksim.resources.Pksim;
  *
  * @author pantelispanka
  */
-@ApplicationPath("/services")
+@ApplicationPath("/api")
 public class PKsimApplication extends Application{
     
     public PKsimApplication(){
@@ -27,7 +27,7 @@ public class PKsimApplication extends Application{
         beanConfig.setVersion("1.0");
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setHost("192.168.0.112:8080");
-        beanConfig.setBasePath("/pksim/services");
+        beanConfig.setBasePath("/pksim/api");
         beanConfig.setResourcePackage("org.kinkydesign.pksim.resources");
         beanConfig.setScan(true);
     }
