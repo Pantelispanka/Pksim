@@ -2,9 +2,7 @@ package org.kinkydesign.pksim;
 
 import javax.ejb.Stateless;
 import javax.json.JsonObject;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 @Stateless
 public class Utils {
@@ -30,5 +28,36 @@ public class Utils {
                 out.close();
             }
         }
+    }
+
+    public String runRScript(String rTrainModelPath, String jsonFileName ){
+        //String pythonScriptPath = "C:\\Users\\Angelos\\Desktop\\wildfly-10.1.0.Final\\pythonHello.py";
+        String[] cmd = new String[2];
+        cmd[0] = "R"; // check version of installed python: python -V
+        cmd[1] = rTrainModelPath;
+
+        // create runtime to execute external command
+        Runtime rt = Runtime.getRuntime();
+        Process pr = null;
+        try {
+            pr = rt.exec(cmd);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        // retrieve output from python script
+        BufferedReader bfr = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        String line = "";
+        try {
+            while ((line = bfr.readLine()) != null) {
+                // display each output line form python script
+                stringBuilder.append(line);
+                //System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
     }
 }
