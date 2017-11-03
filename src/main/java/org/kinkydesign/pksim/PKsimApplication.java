@@ -26,7 +26,7 @@ public class PKsimApplication extends Application{
         beanConfig.setDescription("Pksim Services");
         beanConfig.setVersion("1.0");
         beanConfig.setSchemes(new String[]{"http"});
-        beanConfig.setHost("192.168.0.112:8080");
+        beanConfig.setHost("127.0.0.1:8080");
         beanConfig.setBasePath("/pksim/api");
         beanConfig.setResourcePackage("org.kinkydesign.pksim.resources");
         beanConfig.setScan(true);
